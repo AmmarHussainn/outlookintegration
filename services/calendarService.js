@@ -9,31 +9,31 @@ class CalendarService {
         this.userEmail = process.env.USER_EMAIL;
     }
 
-    async makeGraphRequest(method, endpoint, data = null) {
-        try {
-            const accessToken = await authService.getAccessToken();
-            console.log("Access Token:", token);
+   async makeGraphRequest(method, endpoint, data = null) {
+    try {
+        const accessToken = await authService.getAccessToken();
+        console.log("Access Token:", accessToken);  // Fixed variable name here
 
-            const config = {
-                method: method,
-                url: `${this.graphApiUrl}${endpoint}`,
-                headers: {
-                    'Authorization': `Bearer ${accessToken}`,
-                    'Content-Type': 'application/json'
-                }
-            };
-
-            if (data) {
-                config.data = data;
+        const config = {
+            method: method,
+            url: `${this.graphApiUrl}${endpoint}`,
+            headers: {
+                'Authorization': `Bearer ${accessToken}`,
+                'Content-Type': 'application/json'
             }
+        };
 
-            const response = await axios(config);
-            return response.data;
-        } catch (error) {
-            console.error('Graph API Error:', error.response?.data || error.message);
-            throw error;
+        if (data) {
+            config.data = data;
         }
+
+        const response = await axios(config);
+        return response.data;
+    } catch (error) {
+        console.error('Graph API Error:', error.response?.data || error.message);
+        throw error;
     }
+}
 
     parseDateTime(dateTimeString) {
         // Parse various date formats like "August 9 at 6am", "Aug 9, 2024 6:00 AM", etc.

@@ -14,16 +14,15 @@ class AuthService {
 
     async getAccessToken() {
         try {
-            const clientCredentialRequest = {
-                scopes: ['https://graph.microsoft.com/.default']
-            };
+           const clientCredentialRequest = {
+    scopes: ['https://graph.microsoft.com/.default'] // Uses ALL application permissions
+};
 
             const response = await this.msalInstance.acquireTokenByClientCredential(clientCredentialRequest);
-           
             return response.accessToken;
         } catch (error) {
-            console.error('Error getting access token:', error);
-            throw error;
+            console.error('Error getting access token:', error.message);
+            throw new Error(`Failed to acquire token: ${error.message}`);
         }
     }
 }
