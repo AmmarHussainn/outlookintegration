@@ -18,15 +18,24 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "@azure/msal-node": "^3.6.3",
-    "axios": "^1.10.0",
+    "@azure/identity": "^4.10.2",
+    "@azure/msal-node": "^3.6.4",
+    "@microsoft/microsoft-graph-client": "^3.0.7",
+    "axios": "^1.11.0",
+    "cors": "^2.8.5",
     "dotenv": "^17.2.0",
     "express": "^5.1.0",
     "express-rate-limit": "^8.0.1",
+    "express-session": "^1.18.2",
     "helmet": "^8.1.0",
     "joi": "^17.13.3",
     "moment": "^2.30.1",
     "moment-timezone": "^0.6.0",
+    "morgan": "^1.10.1",
+    "nodemailer": "^7.0.5",
+    "uuid": "^11.1.0"
+  },
+  "devDependencies": {
     "nodemon": "^3.1.10"
   }
 }
